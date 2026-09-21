@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Buổi 7 - Bài 2: Sidebar + Content &amp; Card thống kê (Flexbox)</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: Arial, sans-serif; }
+
+/* ===== LAYOUT SIDEBAR + CONTENT ===== */
+.layout {
+display: flex;
+min-height: 400px;
+}
+.sidebar {
+flex: 0 0 220px; /* cố định 220px, không giãn không co */
+background: #2c3e50;
+color: #fff;
+padding: 20px;
+}
+.sidebar h3 { margin-bottom: 12px; }
+.sidebar ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.sidebar a { color: #fff; text-decoration: none; }
+.sidebar a:hover { text-decoration: underline; }
+.content {
+flex: 1; /* chiếm hết phần còn lại */
+padding: 24px;
+background: #f5f6fa;
+}
+.content p { color: #555; line-height: 1.6; }
+/* ===== CARD THỐNG KÊ HÀNG NGANG ===== */
+.stat-row {
+display: flex;
+justify-content: space-around;
+gap: 16px;
+padding: 32px;
+
+flex-wrap: wrap;
+}
+.stat-card {
+flex: 1 1 160px;
+max-width: 200px;
+background: #fff;
+border-radius: 10px;
+box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+padding: 20px;
+display: flex;
+flex-direction: column; /* xếp số và label theo chiều dọc */
+align-items: center;
+text-align: center;
+}
+.stat-card .so-lieu { font-size: 1.8rem; font-weight: bold; color: #2c3e50; }
+.stat-card .nhan { color: #777; margin-top: 4px; }
+</style>
+</head>
+<body>
+<!-- ===== PHẦN 1: Sidebar + Content ===== -->
+<div class="layout">
+<aside class="sidebar">
+<h3>Danh mục</h3>
+<ul>
+<li><a href="#">Áo</a></li>
+<li><a href="#">Quần</a></li>
+<li><a href="#">Giày dép</a></li>
+<li><a href="#">Phụ kiện</a></li>
+</ul>
+
+</aside>
+<main class="content">
+<h2>Sản phẩm nổi bật</h2>
+<p>Đây là khu vực nội dung chính, tự động chiếm hết phần không gian còn lại
+sau khi sidebar đã lấy 220px cố định — nhờ <code>flex: 1</code> trên
+phần tử <code>.content</code>.</p>
+</main>
+</div>
+<!-- ===== PHẦN 2: Card thống kê hàng ngang ===== -->
+<section class="stat-row">
+<div class="stat-card">
+<div class="so-lieu">1.245</div>
+<div class="nhan">Tổng đơn hàng</div>
+</div>
+<div class="stat-card">
+<div class="so-lieu">328tr</div>
+<div class="nhan">Doanh thu</div>
+</div>
+<div class="stat-card">
+<div class="so-lieu">89</div>
+<div class="nhan">Khách hàng mới</div>
+</div>
+</section>
+</body>
+</html>

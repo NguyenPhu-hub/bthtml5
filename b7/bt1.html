@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Buổi 7 - Bài 1: Navbar + Product Grid (Flexbox)</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: Arial, sans-serif; }
+/* ===== NAVBAR: logo trái - menu giữa - giỏ hàng phải, căn giữa dọc hoàn hảo ===== */
+.navbar {
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 16px 32px;
+background: #2c3e50;
+color: #fff;
+flex-wrap: wrap;
+gap: 12px;
+}
+.logo { font-size: 1.4rem; font-weight: bold; }
+.nav-links {
+display: flex;
+gap: 24px;
+list-style: none;
+
+}
+.nav-links a { color: #fff; text-decoration: none; }
+.nav-links a:hover { text-decoration: underline; }
+.btn-cart {
+padding: 8px 16px;
+border: none;
+border-radius: 6px;
+background: #e74c3c;
+color: #fff;
+cursor: pointer;
+}
+/* ===== PRODUCT GRID: tự co giãn/xuống dòng, không dùng float ===== */
+.product-grid {
+display: flex;
+flex-wrap: wrap;
+gap: 20px;
+padding: 32px;
+}
+.product-card {
+flex: 1 1 220px; /* kích thước gốc 220px, giãn/co linh hoạt */
+max-width: 260px;
+border: 1px solid #eee;
+border-radius: 8px;
+padding: 12px;
+text-align: center;
+}
+.product-card img {
+
+width: 100%;
+height: 160px;
+object-fit: cover;
+border-radius: 6px;
+}
+.product-card h3 { margin: 10px 0 4px; font-size: 16px; }
+.product-card p { color: #e74c3c; font-weight: bold; }
+</style>
+</head>
+<body>
+<header class="navbar">
+<div class="logo">ShopABC</div>
+<nav>
+<ul class="nav-links">
+<li><a href="#">Trang chủ</a></li>
+<li><a href="#">Sản phẩm</a></li>
+<li><a href="#">Giới thiệu</a></li>
+<li><a href="#">Liên hệ</a></li>
+</ul>
+</nav>
+<button class="btn-cart">🛒 Giỏ hàng (0)</button>
+</header>
+<main class="product-grid">
+<div class="product-card">
+<img src="https://picsum.photos/id/21/300/300" alt="Áo thun trắng">
+<h3>Áo thun trắng</h3>
+<p>199.000đ</p>
+</div>
+<div class="product-card">
+
+<img src="https://picsum.photos/id/25/300/300" alt="Áo sơ mi xanh">
+<h3>Áo sơ mi xanh</h3>
+<p>329.000đ</p>
+</div>
+<div class="product-card">
+<img src="https://picsum.photos/id/28/300/300" alt="Quần jean">
+<h3>Quần jean slimfit</h3>
+<p>459.000đ</p>
+</div>
+<div class="product-card">
+<img src="https://picsum.photos/id/103/300/300" alt="Giày sneaker">
+<h3>Giày sneaker</h3>
+<p>699.000đ</p>
+</div>
+</main>
+</body>
+</html>
