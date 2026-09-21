@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Buổi 6 - Bài 1: Dịch vụ Thiết kế Website</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: Arial, sans-serif; color: #222; }
+/* ===== BANNER: overlay gradient trên ảnh + text-shadow ===== */
+.banner {
+height: 320px;
+background:
+linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.65)),
+url('https://picsum.photos/id/180/1600/500');
+background-size: cover;
+background-position: center;
+color: #fff;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+text-align: center;
+padding: 0 20px;
+}
+.banner h1 {
+
+font-size: 2.4rem;
+text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+margin-bottom: 10px;
+}
+.banner p {
+font-size: 1.1rem;
+text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+}
+/* ===== KHU VỰC DỊCH VỤ: card bo góc, đổ bóng, hover nổi lên ===== */
+.services {
+display: flex;
+gap: 24px;
+padding: 40px;
+flex-wrap: wrap;
+justify-content: center;
+}
+.card {
+width: 280px;
+border-radius: 16px;
+box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+padding: 16px;
+text-align: center;
+background: #fff;
+transition: box-shadow 0.3s, transform 0.3s;
+}
+.card:hover {
+box-shadow: 0 12px 28px rgba(0,0,0,0.18);
+transform: translateY(-6px);
+
+}
+.card-img {
+width: 100%;
+height: 160px;
+object-fit: cover;
+border-radius: 12px;
+margin-bottom: 12px;
+display: block;
+}
+/* ===== NÚT CTA: gradient + bo tròn dạng pill ===== */
+.btn-primary {
+display: inline-block;
+margin-top: 10px;
+padding: 10px 24px;
+border-radius: 999px;
+background: linear-gradient(135deg, #667eea, #764ba2);
+color: #fff;
+text-decoration: none;
+font-weight: bold;
+box-shadow: 0 4px 10px rgba(102, 126, 234, 0.4);
+transition: box-shadow 0.3s;
+}
+.btn-primary:hover {
+box-shadow: 0 6px 16px rgba(102, 126, 234, 0.6);
+}
+</style>
+</head>
+<body>
+
+<section class="banner">
+<h1>Thiết Kế Website Chuyên Nghiệp</h1>
+<p>Nhanh chóng · Hiện đại · Chuẩn responsive</p>
+</section>
+<section class="services">
+<div class="card">
+<img src="https://picsum.photos/id/3/400/300" alt="Thiết kế landing page" class="card-img">
+<h3>Landing Page</h3>
+<p>Thiết kế trang bán hàng chuyển đổi cao.</p>
+<a href="#" class="btn-primary">Tìm hiểu thêm</a>
+</div>
+<div class="card">
+<img src="https://picsum.photos/id/20/400/300" alt="Thiết kế website doanh nghiệp" class="card-img">
+<h3>Website Doanh Nghiệp</h3>
+<p>Xây dựng hình ảnh thương hiệu chuyên nghiệp.</p>
+<a href="#" class="btn-primary">Tìm hiểu thêm</a>
+</div>
+<div class="card">
+<img src="https://picsum.photos/id/26/400/300" alt="Thiết kế e-commerce" class="card-img">
+<h3>Website Bán Hàng</h3>
+<p>Tích hợp thanh toán, quản lý sản phẩm dễ dàng.</p>
+<a href="#" class="btn-primary">Tìm hiểu thêm</a>
+</div>
+</section>
+</body>
+</html>
