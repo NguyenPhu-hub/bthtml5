@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Buổi 8 - Bài 2: Photo Gallery (Grid Masonry)</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: Arial, sans-serif; background: #f5f6fa; padding: 32px; }
+h1 { text-align: center; margin-bottom: 24px; }
+/* ===== GALLERY TỰ ĐỘNG CHIA CỘT VỪA MÀN HÌNH =====
+repeat(auto-fit, minmax(220px, 1fr)): mỗi cột tối thiểu 220px,
+tự tính số cột phù hợp, không cần viết @media riêng */
+.gallery {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+grid-auto-rows: 140px; /* chiều cao 1 "hàng cơ sở" của lưới */
+
+gap: 12px;
+}
+.gallery img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+border-radius: 8px;
+display: block;
+}
+/* Ảnh muốn nổi bật hơn: chiếm 2 hàng (grid-row: span 2) */
+.tall { grid-row: span 2; }
+/* Ảnh muốn nổi bật hơn theo chiều ngang: chiếm 2 cột */
+.wide { grid-column: span 2; }
+</style>
+</head>
+<body>
+<h1>Photo Gallery</h1>
+<div class="gallery">
+<img class="tall" src="https://picsum.photos/id/1015/400/900" alt="Ảnh 1">
+<img src="https://picsum.photos/id/1016/400/300" alt="Ảnh 2">
+<img class="wide" src="https://picsum.photos/id/1018/800/300" alt="Ảnh 3">
+<img src="https://picsum.photos/id/1019/400/300" alt="Ảnh 4">
+<img src="https://picsum.photos/id/1020/400/300" alt="Ảnh 5">
+<img class="tall" src="https://picsum.photos/id/1021/400/900" alt="Ảnh 6">
+<img src="https://picsum.photos/id/1024/400/300" alt="Ảnh 7">
+<img src="https://picsum.photos/id/1027/400/300" alt="Ảnh 8">
+<img class="wide" src="https://picsum.photos/id/1035/800/300" alt="Ảnh 9">
+
+</div>
+</body>
+</html>

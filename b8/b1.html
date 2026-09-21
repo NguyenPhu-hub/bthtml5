@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Buổi 8 - Bài 1: Dashboard Quản Trị (Grid)</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: Arial, sans-serif; }
+/* ===== GRID LAYOUT TỔNG THỂ: sidebar - header - content - footer ===== */
+.layout {
+display: grid;
+grid-template-columns: 220px 1fr;
+grid-template-rows: 70px 1fr 50px;
+grid-template-areas:
+"sidebar header"
+"sidebar content"
+"sidebar footer";
+min-height: 100vh;
+}
+.sidebar { grid-area: sidebar; background: #2c3e50; color: #fff; padding: 20px; }
+.header { grid-area: header; background: #fff; border-bottom: 1px solid #eee; padding: 0 24px; }
+.content { grid-area: content; background: #f5f6fa; padding: 24px; }
+.footer { grid-area: footer; background: #ecf0f1; padding: 0 24px; }
+/* ===== FLEXBOX xử lý bên trong sidebar (menu xếp dọc) ===== */
+
+.sidebar .logo { font-size: 1.3rem; font-weight: bold; margin-bottom: 20px; }
+.sidebar nav {
+display: flex;
+flex-direction: column;
+gap: 12px;
+}
+.sidebar nav a {
+color: #fff;
+text-decoration: none;
+padding: 8px 12px;
+border-radius: 6px;
+}
+.sidebar nav a:hover { background: rgba(255,255,255,0.15); }
+/* ===== FLEXBOX xử lý bên trong header (2 khối trái-phải) ===== */
+.header {
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+.footer { display: flex; align-items: center; color: #555; font-size: 14px; }
+/* ===== GRID lồng bên trong content: bộ thẻ thống kê tự co giãn ===== */
+.stat-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+gap: 16px;
+align-content: start;
+
+margin-bottom: 24px;
+}
+.stat-card {
+background: #fff;
+border-radius: 10px;
+padding: 20px;
+box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+text-align: center;
+}
+.stat-card h3 { font-size: 1.8rem; color: #2c3e50; }
+.stat-card p { color: #777; margin-top: 4px; }
+table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 10px; overflow: hidden; }
+th, td { padding: 10px 14px; text-align: left; border-bottom: 1px solid #eee; }
+th { background: #2c3e50; color: #fff; }
+</style>
+</head>
+<body>
+<div class="layout">
+<aside class="sidebar">
+<div class="logo">Admin</div>
+<nav>
+<a href="#">Tổng quan</a>
+<a href="#">Sản phẩm</a>
+<a href="#">Đơn hàng</a>
+<a href="#">Khách hàng</a>
+</nav>
+</aside>
+
+<header class="header">
+<h1>Tổng quan</h1>
+<div class="user-info">Xin chào, Admin</div>
+</header>
+<main class="content">
+<div class="stat-grid">
+<div class="stat-card">
+<h3>1.245</h3>
+<p>Đơn hàng</p>
+</div>
+<div class="stat-card">
+<h3>328tr</h3>
+<p>Doanh thu</p>
+</div>
+<div class="stat-card">
+<h3>89</h3>
+<p>Khách hàng mới</p>
+</div>
+</div>
+<table>
+<thead>
+<tr><th>Mã đơn</th><th>Khách hàng</th><th>Trạng thái</th></tr>
+</thead>
+<tbody>
+<tr><td>#1001</td><td>Nguyễn Văn A</td><td>Đang giao</td></tr>
+<tr><td>#1002</td><td>Trần Thị B</td><td>Hoàn thành</td></tr>
+<tr><td>#1003</td><td>Lê Văn C</td><td>Chờ xác nhận</td></tr>
+</tbody>
+</table>
+
+</main>
+<footer class="footer">
+&copy; 2026 ShopABC Admin
+</footer>
+</div>
+</body>
+</html>
