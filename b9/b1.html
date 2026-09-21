@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<!-- BẮT BUỘC: thiếu dòng này mọi kỹ thuật responsive bên dưới sẽ không hoạt động đúng trên mobile thật -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Buổi 9 - Bài 1: Dashboard Responsive</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: Arial, sans-serif; }
+/* ===== MOBILE-FIRST: mặc định layout 1 cột, sidebar nằm trên như thanh ngang ===== */
+.layout {
+display: grid;
+grid-template-columns: 1fr;
+grid-template-rows: auto 70px 1fr 50px;
+grid-template-areas:
+"sidebar"
+"header"
+"content"
+"footer";
+min-height: 100vh;
+}
+.sidebar { grid-area: sidebar; background: #2c3e50; color: #fff; padding: 16px; }
+.header { grid-area: header; background: #fff; border-bottom: 1px solid #eee; padding: 0 20px; }
+.content { grid-area: content; background: #f5f6fa; padding: 20px; }
+.footer { grid-area: footer; background: #ecf0f1; padding: 0 20px; }
+
+.sidebar .logo { font-weight: bold; margin-bottom: 10px; }
+.sidebar nav {
+display: flex;
+flex-direction: row; /* mobile: menu sidebar nằm NGANG */
+flex-wrap: wrap;
+gap: 8px;
+}
+.sidebar nav a {
+color: #fff;
+text-decoration: none;
+padding: 6px 10px;
+border-radius: 6px;
+font-size: 14px;
+}
+.sidebar nav a:hover { background: rgba(255,255,255,0.15); }
+.header {
+display: flex;
+flex-direction: column;
+justify-content: center;
+gap: 4px;
+}
+.footer { display: flex; align-items: center; color: #555; font-size: 13px; }
+.stat-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+
+gap: 12px;
+}
+.stat-card {
+background: #fff;
+border-radius: 10px;
+padding: 16px;
+box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+text-align: center;
+}
+.stat-card h3 { font-size: 1.5rem; color: #2c3e50; }
+.stat-card p { color: #777; margin-top: 4px; font-size: 14px; }
+/* ===== TỪ TABLET (768px) TRỞ LÊN: quay lại layout 2 cột ===== */
+@media (min-width: 768px) {
+.layout {
+grid-template-columns: 220px 1fr;
+grid-template-rows: 70px 1fr 50px;
+grid-template-areas:
+"sidebar header"
+"sidebar content"
+"sidebar footer";
+}
+.sidebar nav { flex-direction: column; }
+.header { flex-direction: row; justify-content: space-between; align-items: center; }
+}
+</style>
+</head>
+<body>
+
+<div class="layout">
+<aside class="sidebar">
+<div class="logo">Admin</div>
+<nav>
+<a href="#">Tổng quan</a>
+<a href="#">Sản phẩm</a>
+<a href="#">Đơn hàng</a>
+<a href="#">Khách hàng</a>
+</nav>
+</aside>
+<header class="header">
+<h1 style="font-size: 1.2rem;">Tổng quan</h1>
+<span style="color:#777; font-size: 13px;">Xin chào, Admin</span>
+</header>
+<main class="content">
+<div class="stat-grid">
+<div class="stat-card"><h3>1.245</h3><p>Đơn hàng</p></div>
+<div class="stat-card"><h3>328tr</h3><p>Doanh thu</p></div>
+<div class="stat-card"><h3>89</h3><p>Khách hàng mới</p></div>
+</div>
+</main>
+<footer class="footer">&copy; 2026 ShopABC Admin</footer>
+</div>
+</body>
+</html>
