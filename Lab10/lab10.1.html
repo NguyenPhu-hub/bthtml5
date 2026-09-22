@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Buổi 10 - Bài 1: Hover Zoom Card Sản Phẩm</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: Arial, sans-serif; background: #f5f6fa; padding: 32px; }
+h1 { text-align: center; margin-bottom: 24px; }
+.product-grid {
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+gap: 24px;
+}
+.product-card {
+width: 260px;
+border-radius: 12px;
+box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+overflow: hidden; /* QUAN TRỌNG: cắt phần ảnh bị zoom tràn ra ngoài khung bo góc */
+background: #fff;
+text-align: center;
+/* transition khai báo Ở TRẠNG THÁI GỐC, không khai báo trong :hover */
+transition: box-shadow 0.3s, transform 0.3s;
+}
+
+.product-card:hover {
+box-shadow: 0 12px 24px rgba(0,0,0,0.18);
+transform: translateY(-6px);
+}
+.img-wrapper {
+overflow: hidden; /* khung cắt ảnh, để ảnh bên trong to hơn khung mà không vỡ layout */
+}
+.img-wrapper img {
+width: 100%;
+height: 200px;
+object-fit: cover;
+display: block;
+transition: transform 0.4s ease;
+}
+/* Khi hover vào CARD, ảnh BÊN TRONG .img-wrapper mới phóng to —
+đây là công thức chuẩn cho hiệu ứng zoom ảnh không vỡ layout */
+.product-card:hover .img-wrapper img {
+transform: scale(1.1);
+}
+.info { padding: 14px; }
+.info h3 { margin-bottom: 6px; }
+.info p { color: #e74c3c; font-weight: bold; }
+</style>
+</head>
+<body>
+<h1>Rê chuột vào từng sản phẩm để xem hiệu ứng</h1>
+
+<div class="product-grid">
+<div class="product-card">
+<div class="img-wrapper">
+<img src="https://picsum.photos/id/103/400/400" alt="Giày Sneaker XYZ">
+</div>
+<div class="info">
+<h3>Giày Sneaker XYZ</h3>
+<p>699.000đ</p>
+</div>
+</div>
+<div class="product-card">
+<div class="img-wrapper">
+<img src="https://picsum.photos/id/21/400/400" alt="Áo thun Basic">
+</div>
+<div class="info">
+<h3>Áo thun Basic</h3>
+<p>199.000đ</p>
+</div>
+</div>
+<div class="product-card">
+<div class="img-wrapper">
+<img src="https://picsum.photos/id/26/400/400" alt="Balo du lịch">
+</div>
+<div class="info">
+<h3>Balo du lịch</h3>
+<p>459.000đ</p>
+</div>
+</div>
+</div>
+
+</body>
+</html>

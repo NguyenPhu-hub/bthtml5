@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Buổi 10 - Bài 2: Flip Card Product Grid</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: Arial, sans-serif; background: #f5f6fa; padding: 32px; }
+h1 { text-align: center; margin-bottom: 24px; }
+.grid {
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+gap: 24px;
+}
+/* ===== KHÔNG GIAN 3D CHO FLIP CARD ===== */
+.flip-card {
+width: 240px;
+height: 300px;
+perspective: 1000px; /* khai báo ở phần tử NGOÀI CÙNG để tạo không gian 3D bên trong */
+}
+
+.flip-card-inner {
+width: 100%;
+height: 100%;
+position: relative;
+transition: transform 0.6s;
+transform-style: preserve-3d; /* giữ đúng vị trí 3D của các con, không bị "dẹt" lại */
+}
+.flip-card:hover .flip-card-inner {
+transform: rotateY(180deg); /* lật toàn bộ khối inner 180 độ khi hover */
+}
+.flip-card-front, .flip-card-back {
+position: absolute;
+width: 100%;
+height: 100%;
+backface-visibility: hidden; /* ẨN mặt sau khi nó quay lưng lại người xem — chìa khóa hiệu ứng flip */
+border-radius: 12px;
+padding: 16px;
+box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+text-align: center;
+box-sizing: border-box;
+}
+.flip-card-front {
+background: #fff;
+display: flex;
+flex-direction: column;
+justify-content: center;
+}
+.flip-card-front img {
+
+width: 100%;
+height: 150px;
+object-fit: cover;
+border-radius: 8px;
+margin-bottom: 10px;
+}
+.flip-card-back {
+background: #2c3e50;
+color: #fff;
+transform: rotateY(180deg); /* xoay sẵn 180 độ để khi cả .inner lật 180 độ thì mặt này hiện ra đúng chiều */
+display: flex;
+flex-direction: column;
+justify-content: center;
+gap: 8px;
+}
+.flip-card-back p { font-size: 14px; line-height: 1.5; }
+.btn-mua {
+margin-top: 8px;
+display: inline-block;
+padding: 8px 16px;
+background: #e74c3c;
+color: #fff;
+text-decoration: none;
+border-radius: 6px;
+font-size: 14px;
+}
+</style>
+</head>
+<body>
+
+<h1>Rê chuột vào card để lật xem chi tiết</h1>
+<div class="grid">
+<div class="flip-card">
+<div class="flip-card-inner">
+<div class="flip-card-front">
+<img src="https://picsum.photos/id/103/300/200" alt="Giày Sneaker XYZ">
+<h3>Giày Sneaker XYZ</h3>
+</div>
+<div class="flip-card-back">
+<h3>Giày Sneaker XYZ</h3>
+<p>Đế cao su chống trơn, thiết kế tối giản, phù hợp mọi trang phục.</p>
+<p><strong>699.000đ</strong></p>
+<a href="#" class="btn-mua">Mua ngay</a>
+</div>
+</div>
+</div>
+<div class="flip-card">
+<div class="flip-card-inner">
+<div class="flip-card-front">
+<img src="https://picsum.photos/id/21/300/200" alt="Áo thun Basic">
+<h3>Áo thun Basic</h3>
+</div>
+<div class="flip-card-back">
+<h3>Áo thun Basic</h3>
+<p>Chất liệu cotton 100%, form rộng thoải mái, nhiều màu sắc.</p>
+<p><strong>199.000đ</strong></p>
+<a href="#" class="btn-mua">Mua ngay</a>
+</div>
+
+</div>
+</div>
+<div class="flip-card">
+<div class="flip-card-inner">
+<div class="flip-card-front">
+<img src="https://picsum.photos/id/26/300/200" alt="Balo du lịch">
+<h3>Balo du lịch</h3>
+</div>
+<div class="flip-card-back">
+<h3>Balo du lịch</h3>
+<p>Chống nước, nhiều ngăn tiện lợi, phù hợp du lịch và đi học.</p>
+<p><strong>459.000đ</strong></p>
+<a href="#" class="btn-mua">Mua ngay</a>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>
