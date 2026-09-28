@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Buổi 11 - Bài 1: Banner Animation</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: Arial, sans-serif; }
+/* ===== ANIMATION: chữ trượt vào từ dưới lên ===== */
+@keyframes truotVaoTuDuoi {
+from { opacity: 0; transform: translateY(30px); }
+to { opacity: 1; transform: translateY(0); }
+}
+.hero {
+height: 60vh;
+min-height: 320px;
+background:
+linear-gradient(to bottom, rgba(0,0,0,0.25), rgba(0,0,0,0.6)),
+url('https://picsum.photos/id/180/1600/600');
+background-size: cover;
+background-position: center;
+color: #fff;
+display: flex;
+flex-direction: column;
+justify-content: center;
+
+align-items: center;
+text-align: center;
+}
+.hero-title {
+font-size: clamp(28px, 5vw, 48px);
+margin-bottom: 10px;
+animation: truotVaoTuDuoi 0.8s ease-out;
+}
+.hero-sub {
+font-size: clamp(15px, 2vw, 20px);
+/* delay 0.2s để chạy SAU tiêu đề, tạo hiệu ứng xuất hiện tuần tự */
+animation: truotVaoTuDuoi 0.8s ease-out 0.2s;
+/* giữ trạng thái opacity:0 trong lúc chờ delay, tránh bị "chớp hiện rồi ẩn" */
+animation-fill-mode: backwards;
+}
+/* ===== ANIMATION: loading spinner xoay vô hạn ===== */
+@keyframes xoayVongTron {
+from { transform: rotate(0deg); }
+to { transform: rotate(360deg); }
+}
+.loading-wrapper {
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 12px;
+padding: 24px;
+color: #555;
+}
+
+.spinner {
+width: 32px;
+height: 32px;
+border: 4px solid #eee;
+border-top: 4px solid #3498db;
+border-radius: 50%;
+animation: xoayVongTron 0.8s linear infinite;
+}
+</style>
+</head>
+<body>
+<section class="hero">
+<h1 class="hero-title">Chào mừng đến với ShopABC</h1>
+<p class="hero-sub">Ưu đãi lớn nhất trong năm</p>
+</section>
+<div class="loading-wrapper">
+<div class="spinner"></div>
+<p>Đang tải sản phẩm...</p>
+</div>
+</body>
+</html>

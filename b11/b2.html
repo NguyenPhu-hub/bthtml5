@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Buổi 11 - Bài 2: Dark/Light Mode</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+/* ===== CSS VARIABLES: khai báo 2 phiên bản theme ===== */
+:root {
+--mau-nen: #ffffff;
+--mau-nen-card: #f5f6fa;
+--mau-chu: #2c3e50;
+--mau-vien: #e0e0e0;
+}
+/* Khi <body> có class "dark", các biến này bị GHI ĐÈ chỉ trong phạm vi đó */
+body.dark {
+--mau-nen: #1a1a2e;
+--mau-nen-card: #24243e;
+--mau-chu: #f0f0f0;
+--mau-vien: #3a3a5a;
+}
+body {
+font-family: Arial, sans-serif;
+background: var(--mau-nen);
+color: var(--mau-chu);
+transition: background 0.3s, color 0.3s;
+padding: 0 0 40px;
+}
+.topbar {
+display: flex;
+
+justify-content: space-between;
+align-items: center;
+padding: 16px 24px;
+border-bottom: 1px solid var(--mau-vien);
+}
+#btnToggleTheme {
+padding: 8px 16px;
+border: 1px solid var(--mau-vien);
+border-radius: 6px;
+background: var(--mau-nen-card);
+color: var(--mau-chu);
+cursor: pointer;
+font-size: 14px;
+}
+main { max-width: 700px; margin: 24px auto; padding: 0 20px; }
+.card {
+background: var(--mau-nen-card);
+border: 1px solid var(--mau-vien);
+border-radius: 10px;
+padding: 16px 20px;
+margin-bottom: 16px;
+transition: background 0.3s, border-color 0.3s;
+}
+/* ===== ANIMATION "pulse": to nhỏ nhẹ nhàng liên tục cho nút CTA ===== */
+@keyframes pulse {
+0% { transform: scale(1); }
+50% { transform: scale(1.05); }
+100% { transform: scale(1); }
+
+}
+.btn-mua-ngay {
+display: inline-block;
+margin-top: 10px;
+padding: 10px 24px;
+background: #e74c3c;
+color: #fff;
+border: none;
+border-radius: 999px;
+font-size: 15px;
+cursor: pointer;
+animation: pulse 1.6s ease-in-out infinite;
+}
+</style>
+</head>
+<body>
+<header class="topbar">
+<h1 style="font-size:1.2rem;">Trang của tôi</h1>
+<button id="btnToggleTheme">🌙 Chế độ tối</button>
+</header>
+<main>
+<div class="card">
+<h3>Nội dung mẫu</h3>
+<p>Đây là 1 khối card để kiểm tra theme sáng/tối. Toàn bộ màu sắc
+đều dùng <code>var(--ten-bien)</code>, không cần viết riêng 1 bộ CSS
+thứ 2 cho chế độ tối.</p>
+</div>
+<div class="card">
+
+<h3>Giày Sneaker XYZ</h3>
+<p>699.000đ — thiết kế tối giản, phù hợp mọi trang phục.</p>
+<button class="btn-mua-ngay">Mua ngay</button>
+</div>
+</main>
+<script>
+const btnToggle = document.getElementById('btnToggleTheme');
+const body = document.body;
+// Khi trang load: đọc theme đã lưu trước đó và áp dụng ngay
+const themeDaLuu = localStorage.getItem('theme');
+if (themeDaLuu === 'dark') {
+body.classList.add('dark');
+btnToggle.textContent = '☀️ Chế độ sáng';
+}
+// Khi bấm nút: chỉ cần thêm/xóa 1 class "dark" trên <body> —
+// toàn bộ màu sắc dùng var() trong CSS sẽ TỰ ĐỘNG đổi theo
+btnToggle.addEventListener('click', function () {
+body.classList.toggle('dark');
+if (body.classList.contains('dark')) {
+localStorage.setItem('theme', 'dark');
+btnToggle.textContent = '☀️ Chế độ sáng';
+} else {
+localStorage.setItem('theme', 'light');
+btnToggle.textContent = '🌙 Chế độ tối';
+}
+});
+</script>
+
+</body>
+</html>
