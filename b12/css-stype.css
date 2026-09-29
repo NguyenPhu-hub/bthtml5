@@ -1,0 +1,211 @@
+/* ============================================================
+Buổi 12 - Bài 1: style.css — CSS chính dùng chung cho mọi trang
+(nạp SAU variables.css, nạp TRƯỚC responsive.css)
+============================================================ */
+/* ----- RESET & BASE ----- */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+font-family: Arial, Helvetica, sans-serif;
+background: var(--mau-nen);
+color: var(--mau-chu);
+transition: background 0.3s, color 0.3s;
+}
+
+a { color: var(--mau-chinh); }
+img { max-width: 100%; display: block; }
+.page-container {
+width: min(94%, 1100px);
+margin: 0 auto;
+padding: 40px 0;
+}
+/* ----- NAVBAR (dùng chung mọi trang) ----- */
+.navbar {
+display: flex;
+flex-wrap: wrap;
+justify-content: space-between;
+align-items: center;
+padding: 16px 24px;
+background: var(--mau-nen-dam);
+transition: background 0.3s;
+}
+.navbar .logo { color: #fff; font-size: 1.4rem; font-weight: bold; text-decoration: none; }
+.nav-links {
+display: flex;
+gap: 20px;
+list-style: none;
+}
+.nav-links a { color: #fff; text-decoration: none; }
+.nav-links a:hover { text-decoration: underline; }
+#btnToggleTheme {
+
+padding: 6px 14px;
+border: 1px solid rgba(255,255,255,0.4);
+border-radius: 999px;
+background: transparent;
+color: #fff;
+cursor: pointer;
+font-size: 14px;
+}
+#btnToggleTheme:hover { background: rgba(255,255,255,0.15); }
+/* ----- HERO BANNER ----- */
+.hero {
+height: 46vh;
+min-height: 260px;
+background:
+linear-gradient(to bottom, rgba(0,0,0,0.25), rgba(0,0,0,0.6)),
+var(--hero-bg, url('https://picsum.photos/id/180/1600/600'));
+background-size: cover;
+background-position: center;
+color: #fff;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+text-align: center;
+padding: 0 20px;
+}
+@keyframes truotVaoTuDuoi {
+from { opacity: 0; transform: translateY(24px); }
+to { opacity: 1; transform: translateY(0); }
+}
+
+.hero h1 {
+font-size: clamp(26px, 5vw, 46px);
+text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+margin-bottom: 10px;
+animation: truotVaoTuDuoi 0.7s ease-out;
+}
+.hero p {
+font-size: clamp(14px, 2vw, 18px);
+text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+animation: truotVaoTuDuoi 0.7s ease-out 0.15s;
+animation-fill-mode: backwards;
+}
+/* ----- NÚT DÙNG CHUNG ----- */
+.btn-primary {
+display: inline-block;
+margin-top: 16px;
+padding: 10px 26px;
+border-radius: 999px;
+border: none;
+background: linear-gradient(135deg, var(--mau-chinh), var(--mau-chinh-dam));
+color: #fff;
+text-decoration: none;
+font-weight: bold;
+cursor: pointer;
+box-shadow: 0 4px 10px var(--bong-do);
+transition: box-shadow 0.3s;
+}
+.btn-primary:hover { box-shadow: 0 6px 16px var(--bong-do); }
+
+/* ----- PRODUCT GRID (Flexbox, học Buổi 7) ----- */
+.product-grid {
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+gap: 24px;
+}
+/* ----- FLIP CARD (Transform 3D, học Buổi 10) ----- */
+.flip-card {
+width: 230px;
+height: 290px;
+perspective: 1000px;
+}
+.flip-card-inner {
+width: 100%;
+height: 100%;
+position: relative;
+transition: transform 0.6s;
+transform-style: preserve-3d;
+}
+.flip-card:hover .flip-card-inner {
+transform: rotateY(180deg);
+}
+.flip-card-front, .flip-card-back {
+position: absolute;
+width: 100%;
+height: 100%;
+backface-visibility: hidden;
+
+border-radius: 12px;
+padding: 16px;
+box-shadow: 0 4px 12px var(--bong-do);
+text-align: center;
+}
+.flip-card-front {
+background: var(--mau-nen-card);
+display: flex;
+flex-direction: column;
+justify-content: center;
+transition: background 0.3s;
+}
+.flip-card-front img {
+width: 100%;
+height: 140px;
+object-fit: cover;
+border-radius: 8px;
+margin-bottom: 10px;
+}
+.flip-card-back {
+background: var(--mau-nen-dam);
+color: #fff;
+transform: rotateY(180deg);
+display: flex;
+flex-direction: column;
+justify-content: center;
+gap: 8px;
+transition: background 0.3s;
+}
+
+.flip-card-back p { font-size: 13px; line-height: 1.5; }
+.btn-mua {
+margin-top: 6px;
+display: inline-block;
+padding: 8px 16px;
+background: var(--mau-chinh);
+color: #fff;
+text-decoration: none;
+border-radius: 6px;
+font-size: 14px;
+}
+/* ----- FORM (dùng ở trang Liên hệ, kỹ thuật học Buổi 2) ----- */
+form.form-card {
+max-width: 500px;
+margin: 0 auto;
+background: var(--mau-nen-card);
+padding: 24px 28px;
+border-radius: 10px;
+transition: background 0.3s;
+}
+fieldset { border: 1px solid var(--mau-vien); border-radius: 6px; padding: 16px 20px; }
+legend { font-weight: bold; padding: 0 8px; }
+label { font-weight: bold; display: block; margin-top: 12px; }
+input, textarea {
+width: 100%;
+padding: 9px;
+margin-top: 4px;
+
+border: 1px solid var(--mau-vien);
+border-radius: 4px;
+background: var(--mau-nen);
+color: var(--mau-chu);
+}
+button[type="submit"] {
+width: 100%;
+padding: 12px;
+margin-top: 18px;
+background: var(--mau-chinh);
+color: #fff;
+border: none;
+border-radius: 6px;
+font-size: 16px;
+cursor: pointer;
+}
+button[type="submit"]:hover { background: var(--mau-chinh-dam); }
+/* ----- FOOTER (dùng chung mọi trang) ----- */
+footer.site-footer {
+text-align: center;
+padding: 20px;
+color: var(--mau-chu-phu);
+border-top: 1px solid var(--mau-vien);
+}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ShopABC - Liên hệ</title>
+<link rel="stylesheet" href="Buoi_12_bai_1_css_variables.css">
+<link rel="stylesheet" href="Buoi_12_bai_1_css_style.css">
+<link rel="stylesheet" href="Buoi_12_bai_1_css_responsive.css">
+</head>
+<body>
+<header class="navbar">
+<a href="Buoi_12_bai_1_index.html" class="logo">ShopABC</a>
+<nav>
+<ul class="nav-links">
+<li><a href="Buoi_12_bai_1_index.html">Trang chủ</a></li>
+<li><a href="Buoi_12_bai_1_san-pham.html">Sản phẩm</a></li>
+<li><a href="Buoi_12_bai_1_lien-he.html">Liên hệ</a></li>
+</ul>
+</nav>
+<button id="btnToggleTheme">🌙 Tối</button>
+</header>
+<main class="page-container">
+<h1 style="text-align:center; margin-bottom: 24px;">Liên hệ với chúng tôi</h1>
+<!-- Toàn bộ validate dưới đây dùng thuần HTML5 (required, pattern) — học từ Buổi 2 -->
+
+<form class="form-card" action="#" method="post">
+<fieldset>
+<legend>Thông tin liên hệ</legend>
+<label for="hoten">Họ và tên: <span style="color:#e74c3c">*</span></label>
+<input type="text" id="hoten" name="hoten" placeholder="Nguyễn Văn A" required>
+<label for="email">Email: <span style="color:#e74c3c">*</span></label>
+<input type="email" id="email" name="email" placeholder="ten@example.com" required>
+<label for="phone">Số điện thoại: <span style="color:#e74c3c">*</span></label>
+<input type="tel" id="phone" name="phone"
+pattern="[0-9]{10}" title="Nhập đúng 10 số điện thoại"
+placeholder="0912345678" required>
+<label for="noidung">Nội dung: <span style="color:#e74c3c">*</span></label>
+<textarea id="noidung" name="noidung" rows="4"
+
+placeholder="Bạn cần hỗ trợ vấn đề gì?" required></textarea>
+
+</fieldset>
+<button type="submit">Gửi liên hệ</button>
+</form>
+<p style="text-align:center; margin-top: 24px; color: var(--mau-chu-phu);">
+Hoặc gọi trực tiếp: <a href="tel:19001234">1900 1234</a>
+</p>
+</main>
+<footer class="site-footer">
+<p>&copy; 2026 ShopABC — Đồ án tổng hợp Buổi 12</p>
+</footer>
+
+<script src="Buoi_12_bai_1_js_theme.js"></script>
+</body>
+</html>

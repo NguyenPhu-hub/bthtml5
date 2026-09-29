@@ -1,0 +1,26 @@
+/* ============================================================
+Buổi 12 - Bài 1: responsive.css — toàn bộ @media để riêng 1 file,
+giúp dễ maintain khi cần đổi breakpoint (kỹ thuật học ở Buổi 9)
+============================================================ */
+/* Mobile mặc định: menu navbar xếp dọc, xuống hàng dưới logo */
+.nav-links {
+flex-direction: column;
+width: 100%;
+order: 3;
+margin-top: 10px;
+}
+.navbar { row-gap: 6px; }
+
+/* Từ tablet (768px) trở lên: menu quay lại nằm ngang cùng hàng logo */
+@media (min-width: 768px) {
+.nav-links {
+flex-direction: row;
+width: auto;
+order: 0;
+margin-top: 0;
+}
+}
+/* Form co hẹp lại đúng lề trên màn hình nhỏ */
+@media (max-width: 480px) {
+form.form-card { padding: 18px; }
+}

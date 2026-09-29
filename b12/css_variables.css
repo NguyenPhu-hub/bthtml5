@@ -1,0 +1,38 @@
+/* ============================================================
+Buổi 12 - Bài 1: CSS Variables dùng chung cho mọi trang
+File này được nhúng vào CẢ 3 trang (index, san-pham, lien-he)
+để đảm bảo theme đồng bộ trên toàn site.
+============================================================ */
+:root {
+--mau-chinh: #3498db;
+--mau-chinh-dam: #2980b9;
+--mau-nen: #ffffff;
+--mau-nen-card: #f5f6fa;
+--mau-chu: #2c3e50;
+--mau-chu-phu: #666666;
+--mau-vien: #e0e0e0;
+--bong-do: rgba(0, 0, 0, 0.1);
+/* Màu nền LUÔN TỐI (dùng cho navbar, mặt sau flip-card...) —
+KHÔNG đảo theo theme như --mau-chu, vì các khối này luôn đi kèm
+chữ trắng cố định. Nếu dùng chung --mau-chu cho việc này, khi
+--mau-chu bị đảo thành màu sáng ở dark mode, chữ trắng sẽ mất
+tương phản trên nền sáng — đây chính là lỗi cần tránh. */
+--mau-nen-dam: #2c3e50;
+}
+/* Khi <body> có class "dark", toàn bộ biến trên bị GHI ĐÈ trong phạm vi đó.
+Mọi nơi trong CSS dùng var(--...) sẽ tự động đổi màu theo,
+không cần viết riêng 1 bộ CSS thứ 2 cho chế độ tối. */
+body.dark {
+--mau-chinh: #5dade2;
+--mau-chinh-dam: #3498db;
+
+--mau-nen: #1a1a2e;
+--mau-nen-card: #24243e;
+--mau-chu: #f0f0f0;
+--mau-chu-phu: #b0b0c0;
+--mau-vien: #3a3a5a;
+--bong-do: rgba(0, 0, 0, 0.4);
+/* Vẫn giữ tông tối (tối hơn 1 chút để phân biệt với nền trang) —
+KHÔNG đảo sang màu sáng, để chữ trắng cố định vẫn đọc được */
+--mau-nen-dam: #12121f;
+}
